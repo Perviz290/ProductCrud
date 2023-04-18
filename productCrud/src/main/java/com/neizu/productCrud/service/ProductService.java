@@ -62,20 +62,37 @@ public class ProductService implements ProductInterface {
 
 
     @Override
-    public Product updateProduct(Integer id,UpdateProductRequest updateProductRequest) {
+    public Product updateProduct(Integer id, UpdateProductRequest updateProductRequest) {
         Optional<Product> optionalProduct = productRepo.findById(id);
-        if (optionalProduct.isPresent()){
-            Product product=optionalProduct.get();
-            product=Product.builder()
+        if (optionalProduct.isPresent()) {
+            Product product = optionalProduct.get();
+            product = Product.builder()
                     .id(id)
                     .name(updateProductRequest.getName())
                     .price(updateProductRequest.getPrice())
                     .build();
             productRepo.save(product);
             return product;
-        }else {
+        } else {
             throw new IdNotFoundException(id + "-id is not found");
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

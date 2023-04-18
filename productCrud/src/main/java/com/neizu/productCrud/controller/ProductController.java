@@ -41,11 +41,9 @@ public class ProductController {
 
     @PatchMapping("/update/{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    public Product updateProduct (@PathVariable Integer id, @RequestBody UpdateProductRequest updateProductRequest){
+    public Product updateProduct (@PathVariable(value = "id") Integer id, @RequestBody UpdateProductRequest updateProductRequest){
         return productService.updateProduct(id,updateProductRequest);
     }
-
-
 
 
 
